@@ -1,39 +1,30 @@
-//Esse código utiliza ponteiros em structs para exemplificar o cuidado com o uso dos mesmos!
+//Exemplo simples da utilização de ponteiros em structs
 #include <stdio.h>
 
-typedef struct {
-    int hora;
-    int min;
-    int seg;
-} hr;
-
-hr teste ( hr *agora)
-{
-    agora->hora = 25;
-    agora->min = 02;
-    agora->seg = 77;
-    printf("%d:%d:%d", agora->hora, agora->min, agora->seg);
-    
-    return *agora;
-}
+typedef struct { //Definição da estrutura
+    int hora, minuto, segundo;
+} horario;
 
 int main()
 {
-    
-    hr agora;
-    agora.hora = 10;
-    agora.min = 05;
-    agora.seg = 25;
-    
-    printf("%d:%d:%d", agora.hora, agora.min, agora.seg);
-    
-    printf("\n");
-    teste(&agora);
-    printf("\n");
-
-    //Valor de agora será sobrescrito
-    printf("%d:%d:%d", agora.hora, agora.min, agora.seg);
-    
+   
+    horario agora, depois, *pont; //Declarando variáveis do tipo estrutura
+   
+    agora.hora = 15; //Atribuindo valores
+    agora.minuto = 20; //Atribuindo valores
+    agora.segundo = 27; //Atriuindo valores
+   
+    printf("%d : %d : %d", agora.hora, agora.minuto, agora.segundo); //Exibindo os valores atribuidos
+   
+    //uso do ponteiro
+    pont = &agora;
+   
+    pont->hora = 15; //Atribuindo valores
+    pont->minuto = 45; //Atribuindo valores
+    pont->segundo = 56; //Atriuindo valores
+   
+    printf("\n%d : %d : %d", agora.hora, agora.minuto, agora.segundo); //Exibindo os valores atribuidos
+   
 
     return 0;
 }
